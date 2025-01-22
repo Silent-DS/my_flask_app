@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Task App</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Task App</h1>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Display a message if no tasks exist -->
+    {% if tasks | length < 1 %}
+        <h2>There are no tasks... Create one here!</h2>
+    {% else %}
+        <!-- Task Filters -->
+        <div class="filters">
+            <a href="{{ url_for('filter_tasks', status='all') }}">All</a>
+            <a href="{{ url_for('filter_tasks', status='complete') }}">Complete</a>
+            <a href="{{ url_for('filter_tasks', status='incomplete') }}">Incomplete</a>
+        </div>
+
+        <!-- Display the table if tasks exist -->
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.created.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                <td>{% if task.complete %}Complete{% else %}Incomplete{% endif %}</td>
+                <td>
+                    <!-- Toggle Complete Button -->
+                    <form action="{{ url_for('toggle', id=task.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-toggle">
+                            {% if task.complete %}Mark Incomplete{% else %}Mark Complete{% endif %}
+                        </button>
+                    </form>
+                    <!-- Delete Button -->
+                    <form action="{{ url_for('delete', id=task.id) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn-delete">Delete</button>
+                    </form>
+                    <!-- Update Button -->
+                    <a href="{{ url_for('update', id=task.id) }}">
+                        <button class="btn-update">Update</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    <!-- Form to add a new task -->
+    <form action="{{ url_for('index') }}" method="POST">
+        <input type="text" name="content" id="content" placeholder="Enter a new task" required />
+        <input type="submit" value="Add Task" id="btn_add" />
+    </form>
+</div>
+{% endblock %}

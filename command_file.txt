@@ -1,0 +1,22 @@
+cretae a virtual environment
+python -m venv .venv
+
+activate virtual environment
+.\.venv\Scripts\activate
+
+deactivate virtual environment
+deactivate
+
+To know installed packages
+pip list
+
+For production environment
+use pip freeze > requirements.txt
+pip install -r requirements.txt
+
+installed packages
+pip install Flask Flask-Scss Flask-SQLAlchemy
+
+To add watch saas
+Step One - Open VSCode Editor and Press ctrl+P
+Step Two - Type the following: ext install glenn2223.live-sass

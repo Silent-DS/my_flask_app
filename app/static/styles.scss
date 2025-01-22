@@ -1,0 +1,118 @@
+$primary-color: #0ae972;
+$primary-hover-color: #716889;
+$success-color: #4CAF50;
+$success-hover-color: #45a049;
+$bg_color: #063737;
+$delete-color: #ff4d4d;
+$delete-hover-color: #28045b;
+$update-color: #4CAF50;
+$update-hover-color: #45a049;
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $bg_color;
+    color: white;
+}
+
+.content {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #477147;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(211, 10, 10, 0.1);
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+
+    th, td {
+        padding: 10px;
+        border: 1px solid rgb(36, 51, 51);
+    }
+
+    th {
+        background-color: #d2df1b;
+        color: #833333;
+    }
+}
+
+.btn-delete, .btn-update, .btn-toggle, #btn_add {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete {
+    background-color: $delete-color;
+    color: white;
+
+    &:hover {
+        background-color: $delete-hover-color;
+    }
+}
+
+.btn-update, .btn-toggle {
+    background-color: $update-color;
+    color: white;
+
+    &:hover {
+        background-color: $update-hover-color;
+    }
+}
+
+#btn_add {
+    background-color: $primary-color;
+    color: white;
+
+    &:hover {
+        background-color: $primary-hover-color;
+    }
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.alert-success {
+    background-color: $success-color;
+}
+
+.alert-error {
+    background-color: $delete-color;
+}
+
+.filters {
+    margin-bottom: 20px;
+
+    a {
+        margin-right: 10px;
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+            color: $primary-hover-color;
+        }
+    }
+}
