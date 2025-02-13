@@ -1,7 +1,3 @@
-Here’s an improved version of your `README.md` file. It includes more details, better formatting, and additional sections to make it more informative and user-friendly.
-
----
-
 # My Flask Task App
 
 A simple and efficient Flask application for managing tasks. This app allows you to add, update, delete, and toggle tasks, as well as filter them by completion status. It uses SQLite as the database for storing tasks.
